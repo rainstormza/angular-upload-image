@@ -1,0 +1,19 @@
+<p>
+  prime-ng works!
+</p>
+
+<!-- <p-fileUpload name="myfile[]" url="http://localhost:3002/api/product_image_add" multiple="multiple"></p-fileUpload> -->
+
+<p-growl [value]="msgs"></p-growl>
+
+<p-fileUpload name="demo[]" url="http://localhost:3002/api/product_image_add" (onBeforeUpload)="onBeforeUpload($event)" (onUpload)="onUpload($event)"
+        multiple="multiple" accept="image/*" maxFileSize="1000000">
+    <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+        </ul>
+    </ng-template>
+</p-fileUpload>
+
+
+<!-- https://www.primefaces.org/primeng/#/fileupload -->

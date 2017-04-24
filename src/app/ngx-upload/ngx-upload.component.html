@@ -1,0 +1,38 @@
+<p>
+  ngx-upload works!
+</p>
+
+<!-- advanced-demo.component.html -->
+<div class="button-container">
+  <label class="upload-button is-pulled-left">
+    <input type="file"
+           class="hidden"
+           ngFileSelect
+           [options]="options"
+           [events]="startUploadEvent"
+           (onUpload)="handleUpload($event)"
+           (onPreviewData)="handlePreviewData($event)"
+           (beforeUpload)="beforeUpload($event)">
+    Browse
+  </label>
+</div>
+
+<p>
+  Allowed extensions: <code><b>.jpg</b>, <b>.png</b></code>
+</p>
+
+<div>
+  <button type="button" class="start-upload-button" (click)="startUpload()">Start Upload</button>
+</div>
+
+<div *ngIf="response">
+  <pre><code>{{ response | json }}</code></pre>
+</div>
+
+<div *ngIf="errorMessage">
+  <code>{{ errorMessage }}</code>
+</div>
+
+<div *ngIf="previewData && !response">
+  <img [src]="previewData">
+</div>
